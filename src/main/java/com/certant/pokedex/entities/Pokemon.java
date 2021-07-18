@@ -28,6 +28,13 @@ public class Pokemon {
     @JoinTable(name="POKEMONS_ABILITIES", joinColumns = { @JoinColumn(name="POKEMON_ID") }, inverseJoinColumns = { @JoinColumn(name="ABILITY_ID")})
     private Set<PokemonAbility> abilities;
 
+    @ManyToMany(targetEntity = PokemonType.class, cascade = { CascadeType.ALL })
+    @JoinTable(name="POKEMONS_TYPES",
+            joinColumns = { @JoinColumn(name="POKEMON_ID")},
+            inverseJoinColumns = { @JoinColumn(name="TYPE_ID")}
+    )
+    private Set<PokemonType> types;
+
     public String getName() {
         return name;
     }
@@ -60,5 +67,20 @@ public class Pokemon {
         this.evolutionOnLevel = evolutionOnLevel;
     }
 
+    public Set<PokemonAbility> getAbilities() {
+        return abilities;
+    }
+
+    public void setAbilities(Set<PokemonAbility> abilities) {
+        this.abilities = abilities;
+    }
+
+    public Set<PokemonType> getTypes() {
+        return types;
+    }
+
+    public void setTypes(Set<PokemonType> types) {
+        this.types = types;
+    }
 
 }
