@@ -10,7 +10,7 @@ public class PokemonAbility {
     @Column(name = "ABILITY_ID")
     private long id;
 
-    @Column(name = "NAME")
+    @Column(name = "NAME", unique = true)
     private String name;
 
     @Column(name = "DESCRIPTION")

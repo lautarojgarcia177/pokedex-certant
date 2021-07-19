@@ -10,7 +10,7 @@ public class PokemonType {
     @Column(name = "TYPE_ID")
     private long id;
 
-    @Column(name = "NAME")
+    @Column(name = "NAME", unique = true)
     private String name;
 
     @Column(name = "DESCRIPTION")
