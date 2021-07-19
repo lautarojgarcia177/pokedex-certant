@@ -3,11 +3,11 @@ package com.certant.pokedex.entities;
 import javax.persistence.*;
 
 @Entity
-public class PokemonType {
+public class Ability {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "TYPE_ID")
+    @Column(name = "ABILITY_ID")
     private long id;
 
     @Column(name = "NAME", unique = true)

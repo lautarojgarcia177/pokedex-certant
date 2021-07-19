@@ -1,7 +1,6 @@
 package com.certant.pokedex.entities;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -24,16 +23,16 @@ public class Pokemon {
     @Column(name = "EVOLUTION_ON_LEVEL")
     private short evolutionOnLevel;
 
-    @ManyToMany(targetEntity=PokemonAbility.class, cascade = {CascadeType.ALL})
-    @JoinTable(name="POKEMONS_ABILITIES", joinColumns = { @JoinColumn(name="POKEMON_ID") }, inverseJoinColumns = { @JoinColumn(name="ABILITY_ID")})
-    private Set<PokemonAbility> abilities;
+    @ManyToMany(targetEntity= Ability.class, cascade = {CascadeType.ALL})
+    @JoinTable(name="POKEMONS_ABILITIES", joinColumns = { @JoinColumn(name="PA_POKEMON_ID") }, inverseJoinColumns = { @JoinColumn(name="PA_ABILITY_ID")})
+    private Set<Ability> abilities;
 
-    @ManyToMany(targetEntity = PokemonType.class, cascade = { CascadeType.ALL })
+    @ManyToMany(targetEntity = Type.class, cascade = { CascadeType.ALL })
     @JoinTable(name="POKEMONS_TYPES",
-            joinColumns = { @JoinColumn(name="POKEMON_ID")},
-            inverseJoinColumns = { @JoinColumn(name="TYPE_ID")}
+            joinColumns = { @JoinColumn(name="PT_POKEMON_ID")},
+            inverseJoinColumns = { @JoinColumn(name="PT_TYPE_ID")}
     )
-    private Set<PokemonType> types;
+    private Set<Type> types;
 
     public String getName() {
         return name;
@@ -67,19 +66,19 @@ public class Pokemon {
         this.evolutionOnLevel = evolutionOnLevel;
     }
 
-    public Set<PokemonAbility> getAbilities() {
+    public Set<Ability> getAbilities() {
         return abilities;
     }
 
-    public void setAbilities(Set<PokemonAbility> abilities) {
+    public void setAbilities(Set<Ability> abilities) {
         this.abilities = abilities;
     }
 
-    public Set<PokemonType> getTypes() {
+    public Set<Type> getTypes() {
         return types;
     }
 
-    public void setTypes(Set<PokemonType> types) {
+    public void setTypes(Set<Type> types) {
         this.types = types;
     }
 
