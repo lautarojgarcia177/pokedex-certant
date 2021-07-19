@@ -7,7 +7,7 @@ package com.certant.pokedex.repositories;
         import org.springframework.data.repository.query.Param;
         import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-@RepositoryRestResource(collectionResourceRel = "types", path = "types")
+@RepositoryRestResource()
 public interface PokemonTypeRepository extends PagingAndSortingRepository<PokemonType, Long> {
 
     List<PokemonType> findByName(@Param("name") String name);
